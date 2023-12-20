@@ -19,7 +19,59 @@ You are free to use any colors, animations, etc. that you think would be aesthet
 Mock API
 Get All Customers (GET)
 URL: https://my.api.mockaroo.com/customers.json?key=03c46990
-This always returns a random list of 100 customers.
+This always returns a random list of 100 customers in the following data sturcture:
+
+[
+    {
+        "customer_number": 53165,
+        "first_name": "Lionel",
+        "last_name": "Storey",
+        "date_birth": "01/28/1948",
+        "ssn": "646-70-1743",
+        "email": "lstorey0@mysql.com",
+        "primary_address": {
+            "address_line_1": "82 Forster Road",
+            "city": "Shawnee Mission",
+            "state": "KS",
+            "zip_code": 61853
+        },
+        "mobile_phone_number": "913-700-4338",
+        "join_date": "05/03/2012"
+    },
+    {
+        "customer_number": 94087,
+        "first_name": "Dolorita",
+        "last_name": "Arthan",
+        "date_birth": "04/24/2009",
+        "ssn": "859-90-0524",
+        "email": "darthan1@nationalgeographic.com",
+        "primary_address": {
+            "address_line_1": "67308 Walton Alley",
+            "city": "Littleton",
+            "state": "CO",
+            "zip_code": 17261
+        },
+        "mobile_phone_number": "303-689-9152",
+        "join_date": "04/11/2014"
+    },
+    {
+        "customer_number": 24319,
+        "first_name": "Joseito",
+        "last_name": "McAteer",
+        "date_birth": "06/14/2004",
+        "ssn": "708-86-0230",
+        "email": "jmcateer2@fda.gov",
+        "primary_address": {
+            "address_line_1": "12 Quincy Circle",
+            "city": "Aurora",
+            "state": "CO",
+            "zip_code": 75601
+        },
+        "mobile_phone_number": "303-516-3364",
+        "join_date": "02/07/2023"
+    },...
+]
+
 You can pass an optional size parameter to limit the number of results.
 Example: https://my.api.mockaroo.com/customers.json?key=03c46990&size=5
 Create Customer (POST)
@@ -28,17 +80,23 @@ This always returns a 201 status.
 This is not a real API so no customer is actually created. You can assume the request was successful. Once you receive the response, add the customer to the current view.
 All Customers View
 Display the information below for all customers.
+
+
 Customer number (five digit random number)
 First Name
 Last Name
 Date of Birth
 Last 4 of SSN
 Age (calculated from Date of Birth)
+
+
 For each customer, the user should be able to view some additional information (listed below) in a popover or similar view.
 Email address
 Primary address
 Mobile phone number
 Join date (when they became customers of the company)
+
+
 Create New Customer View
 Create a link to display a form that will allow the user to create a new customer with the information below. Once the user clicks “Submit,” they will see the “All Customers“ view again. Validate all fields before and on submission.
 Customer number (five digit random number)
