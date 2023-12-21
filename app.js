@@ -49,9 +49,7 @@ function renderAllCustomers(customers) {
           <strong>Date of Birth:</strong> ${customer.date_birth}<br>
           <strong>Last 4 of SSN:</strong> ${last4}<br>
           <strong>Age:</strong> ${calculateAge(customer.date_birth)} years<br>
-          <button class="btn btn-primary" data-bs-toggle="popover" data-bs-trigger="focus" title="Additional Information" data-bs-content="${getAdditionalInfo(customer)}">View Details</button>
-        `;
-
+          <a tabindex="0" class="btn btn-primary" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Additional Information" data-bs-content="${getAdditionalInfo(customer)}">View Details</a>`;
 
     cardBody.appendChild(details);
 
@@ -76,20 +74,13 @@ function renderAllCustomers(customers) {
 
 // Function to get additional information for the popover
 function getAdditionalInfo(customer) {
-  // Your logic to retrieve additional information for the popover
-  // ...
-
-  console.log(customer.primary_address);
+  //console.log(customer.primary_address);
 
   let popoverHTML = `
     <strong>Email:</strong> ${customer.email}<br>
     <strong>Primary Address:</strong> ${customer.primary_address.address_line_1}, ${customer.primary_address.city}, ${customer.primary_address.state}, ${customer.primary_address.zip_code} <br>
     <strong>Mobile Phone:</strong> ${customer.mobile_phone_number}<br>
-    <strong>Join Date:</strong> ${customer.join_date}<br>
-    `;
-
-
-
+    <strong>Join Date:</strong> ${customer.join_date}<br>`;
   return popoverHTML;
 
 }
@@ -122,12 +113,12 @@ function showNewCustomerForm() {
       <form id="newCustomerForm" onsubmit="createCustomer(event)">
         <div class="mb-3">
           <label for="firstName" class="form-label">First Name:</label>
-          <input type="text" class="form-control" id="firstName" name="firstName" required>
+          <input type="text" class="form-control" id="firstName" name="firstName" placeholder="firstName" required>
         </div>
   
         <div class="mb-3">
           <label for="lastName" class="form-label">Last Name:</label>
-          <input type="text" class="form-control" id="lastName" name="lastName" required>
+          <input type="text" class="form-control" id="lastName" name="lastName" placeholder="lastName" required>
         </div>
   
         <div class="mb-3">
@@ -137,33 +128,33 @@ function showNewCustomerForm() {
   
         <div class="mb-3">
           <label for="ssn" class="form-label">SSN:</label>
-          <input type="text" class="form-control" id="ssn" name="ssn" required pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}" title="Enter SSN in the format 123-45-6789">
+          <input type="text" class="form-control" id="ssn" name="ssn" placeholder="123-45-6789" required pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}" title="Enter SSN in the format 123-45-6789">
         </div>
   
         <div class="mb-3">
           <label for="email" class="form-label">Email address:</label>
-          <input type="email" class="form-control" id="email" name="email" required>
+          <input type="email" class="form-control" id="email" name="email" placeholder="email@domain.com" required>
         </div>
 
         <div class="mb-3">
         <label for="address_line_1" class="form-label">Primary Address:</label>
-        <input type="text" class="form-control" id="address_line_1" name="addressLine1" required>
+        <input type="text" class="form-control" id="address_line_1" name="addressLine1" placeholder="Address line" required>
       </div>
 
       <div class="mb-3">
         <label for="city" class="form-label">City:</label>
-        <input type="text" class="form-control" id="city" name="city" required>
+        <input type="text" class="form-control" id="city" name="city" placeholder="city"  required>
       </div>
 
       <div class="mb-3">
       <label for="state" class="form-label">State:</label>
-      <input type="text" class="form-control" id="state" name="state" pattern="[A-Za-z]{2}" title="Enter a valid two-letter state code (e.g., CA)" required>
+      <input type="text" class="form-control" id="state" name="state" placeholder="XX" pattern="[A-Za-z]{2}" title="Enter a valid two-letter state code (e.g., CA)" required>
       <div class="invalid-feedback">Please enter a valid two-letter state code (e.g., CA).</div>
     </div>
 
     <div class="mb-3">
       <label for="zip_code" class="form-label">Zip Code:</label>
-      <input type="text" class="form-control" id="zip_code" name="zipCode" pattern="[0-9]{5}" title="Enter a valid 5-digit zip code" required>
+      <input type="text" class="form-control" id="zip_code" name="zipCode" placeholder="12345" pattern="[0-9]{5}" title="Enter a valid 5-digit zip code" required>
       <div class="invalid-feedback">Please enter a valid 5-digit zip code.</div>
     </div>
 
@@ -171,7 +162,7 @@ function showNewCustomerForm() {
   
         <div class="mb-3">
           <label for="mobilePhone" class="form-label">Mobile Phone number:</label>
-          <input type="tel" class="form-control" id="mobilePhone" name="mobilePhone" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Enter phone number in the format 123-456-7890">
+          <input type="tel" class="form-control" id="mobilePhone" name="mobilePhone" placeholder="123-456-7890" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" title="Enter phone number in the format 123-456-7890">
         </div>
   
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -216,8 +207,7 @@ function createCustomer(event) {
     "join_date": getCurrentDate()
   };
 
-  // You can do further processing (e.g., sending the data to the server, updating UI, etc.)
-  console.log("New customer created:", newCustomer);
+  // console.log("New customer created:", newCustomer);
 
   // Post the new customer data to the API
   postCustomerData(newCustomer);
